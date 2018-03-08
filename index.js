@@ -12,7 +12,7 @@ function WebSocketJSONStream(ws) {
     try {
       var parsed = JSON.parse(msg)
       self.push(parsed)
-    } catch {
+    } catch(e) {
       alert("JSON parse error parsing", msg)
     }
   });
