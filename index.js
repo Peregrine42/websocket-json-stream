@@ -13,7 +13,7 @@ function WebSocketJSONStream(ws) {
       var parsed = JSON.parse(msg)
       self.push(parsed)
     } catch(e) {
-      alert("JSON parse error parsing", msg)
+      console.log("JSON parse error parsing", msg)
     }
   });
   ws.on('close', function() {
