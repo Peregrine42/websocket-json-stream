@@ -8,7 +8,14 @@ function WebSocketJSONStream(ws) {
   this.ws = ws;
   var self = this;
 
-  ws.on('message', function(msg) { self.push(JSON.parse(msg)); });
+  ws.on('message', function(msg) { 
+    try {
+      var parsed = JSON.parse(msg)
+      self.push(parsed)
+    } catch {
+      alert("JSON parse error parsing", msg)
+    }
+  });
   ws.on('close', function() {
     self.push(null); // end readable stream
     self.end(); // end writable stream
